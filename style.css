@@ -1,0 +1,285 @@
+:root {
+  --black-primary: #11121b;
+  --black-secondary: #191b27;
+  --blue-primary: #0071ff;
+  --red: #ff0033;
+  --green: #0dc043;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--blue-primary);
+}
+
+.titleBar {
+  width: 100vw;
+  height: 60px;
+  background-color: var(--black-primary);
+  display: flex;
+  align-items: center;
+  z-index: 99;
+}
+
+.editingPane {
+  height: calc(100vh - 60px);
+  width: 27vw;
+  background-color: var(--black-secondary);
+  position: absolute;
+  top: 60px;
+  z-index: 99;
+}
+
+.main {
+  height: calc(100vh - 60px);
+  width: calc(100vw - 27vw);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--blue-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -2;
+}
+
+.titleBar button {
+  margin: 0 28px;
+  width: 100px;
+  height: 35px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.titleBar label {
+  margin: 0 28px;
+  width: 100px;
+  height: 35px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.titleBar button:hover {
+  filter: brightness(90%)
+}
+
+.titleBar #saveImage {
+  margin-left: 16px;
+  background-color: var(--red);
+  color: white;
+}
+
+.titleBar label {
+  background-color: var(--green);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleBar h1 {
+  color: white;
+  position: absolute;
+  left: 50vw;
+  translate: -45% 0;
+  cursor: pointer;
+}
+
+.main img {
+  max-width: calc(100vw - 28vw);
+  max-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+
+.controlContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 27vw;
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.controlContainer h1 {
+  color: white;
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sliderValue {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 50px
+}
+
+.slider {
+  width: calc(27vw - 60px);
+}
+
+.invert {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.invert input {
+  width: 22px;
+  height: 22px;
+}
+
+.invert label {
+  font-size: 1.6rem;
+  color: white;
+  margin-left: 10px;
+  user-select: none;
+}
+
+.reset {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+#reset {
+  width: 150px;
+  height: 45px;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+
+#resetMenu {
+  position: fixed;
+  border: none;
+  width: 400px;
+  top: calc(50% - 75px);
+  height: 150px;
+  left: calc(50% - 200px);
+  border-radius: 10px;
+}
+
+#resetMenu .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#buttonWrapper {
+  margin-top: 30px;
+}
+
+::backdrop {
+  backdrop-filter: blur(20px);
+}
+
+#buttonWrapper button {
+  font-size: 1.3rem;
+  border: none;
+  margin: 0 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+#cancelButton {
+  background-color: var(--green);
+}
+
+#resetButton {
+  background-color: var(--red);
+}
+
+/* Responsive */
+
+@media screen and (width < 740px) {
+  #logo {
+    left: 80vw;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (width < 680px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .controlContainer h1 {
+    font-size: 1.5rem;
+  }
+  button, label {
+    scale: 80%;
+  }
+  .controlContainer {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (width < 600px) {
+  .editingPane {
+    top: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    overflow-y: scroll;
+  }
+
+  .main {
+    width: 100vw;
+    height: calc(60vh - 60px);
+    top: 60px;
+  }
+
+  .main img {
+    max-width: 90vw;
+    max-height: calc(60vh - 80px);
+  }
+
+  .controlContainer {
+    width: 90vw;
+  }
+
+  .controlContainer .subControlContainer {
+    width: 90vw;
+  }
+
+  .controlContainer .subControlContainer .slider {
+    width: 79vw;
+  }
+}
+
+@media screen and (width < 480px) {
+  #logo {
+    display: none;
+  }
+
+  .titleBar button, .titleBar label {
+    font-size: 1.6rem;
+  }
+}

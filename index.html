@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LG Image Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
+</head>
+<body>
+  <div class="titleBar">
+    <label for="imageInp" title="open image">Open</label>
+    <input type="file" id="imageInp" style="display: none;">
+
+    <button id="saveImage" title="save image">Save</button>
+    <h1 id="logo" onclick="reload()" title="Image Editor (reload)">Image Editor</h1>
+  </div>
+
+  <!-- editing pane -->
+
+  <div class="editingPane">
+
+    <div class="brightness controlContainer">
+      <h1 title="brightness">Brightness</h1>
+      <div class="subControlContainer">
+        <input type="range" id="brightnessRange" min="0" max="400" value="100" class="slider" oninput="sliderUpdate()">
+        <input type="number" id="brightnessNumber" class="sliderValue" value="100" oninput="valueUpdate()">
+      </div>
+    </div>
+
+    <div class="contrast controlContainer">
+      <h1 title="contrast">Contrast</h1>
+      <div class="subControlContainer">
+        <input type="range" id="contrastRange" min="0" max="400" value="100" class="slider" oninput="sliderUpdate()">
+        <input type="number" id="contrastNumber" class="sliderValue" value="100" oninput="valueUpdate()">
+      </div>
+    </div>
+
+    <div class="saturation controlContainer">
+      <h1 title="saturation">Saturation</h1>
+      <div class="subControlContainer">
+        <input type="range" id="saturationRange" min="0" max="400" value="100" class="slider" oninput="sliderUpdate()">
+        <input type="number" id="saturationNumber" class="sliderValue" value="100" oninput="valueUpdate()">
+      </div>
+    </div>
+
+    <div class="hue controlContainer">
+      <h1 title="hue-rotate">Hue-rotate</h1>
+      <div class="subControlContainer">
+        <input type="range" id="hueRange" min="0" max="360" value="0" class="slider" oninput="sliderUpdate()">
+        <input type="number" id="hueNumber" class="sliderValue" value="0" oninput="valueUpdate()" on>
+      </div>
+    </div>
+
+    <div class="invert controlContainer">
+      <input type="checkbox" id="invert" onchange="valueUpdate()">
+      <label for="invert" title="invert image">Invert</label>
+    </div>
+
+    <div class="reset controlContainer">
+      <button id="reset" title="reset editing">Reset*</button>
+    </div>
+
+  </div>
+
+  <dialog id="resetMenu">
+    <div class="container">
+      <h1>Do you want to reset?</h1>
+    <div id="buttonWrapper">
+      <button id="cancelButton">Cancel</button>
+      <button id="resetButton">Reset</button>
+    </div>
+    </div>
+  </dialog>
+
+  <!-- main -->
+  <div class="main">
+    <img id="previewImage">
+  </div>
+  
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
